@@ -15,9 +15,13 @@ object baigorria {
 
     method empanadasVendidas(_empanadasVendidas) {
         empanadasVendidas = empanadasVendidas + _empanadasVendidas * 15
+
     }
 
-    method sueldo() = sueldoBaigorria
+    method sueldo() {
+        return sueldoBaigorria
+        
+    } 
 }
 
 
