@@ -1,1 +1,3 @@
-//Escribir aqui los objetos
+object galvan {
+    var sueldoGalvan = 15000
+}
