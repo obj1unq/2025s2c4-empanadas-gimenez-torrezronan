@@ -31,4 +31,6 @@ object gimenez {
     method pagarSueldo(empleado) {
         presupuesto = presupuesto - empleado.sueldo()
     }
+
+    method presupuestoDisponible() = presupuesto
 }
