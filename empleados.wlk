@@ -10,18 +10,18 @@ object galvan {
 
 
 object baigorria {
-    var sueldoBaigorria = 0
     var empanadasVendidas = 0
-
+    var sueldoBaigorria = 0
+    
     method empanadasVendidas(_empanadasVendidas) {
-        empanadasVendidas = empanadasVendidas + _empanadasVendidas * 15
-
+        empanadasVendidas = empanadasVendidas + _empanadasVendidas 
     }
 
-    method sueldo() {
-        return sueldoBaigorria
-        
-    } 
+    method sueldo(){
+        return sueldoBaigorria + empanadasVendidas * 15
+    }
+
+    method empanadas() = empanadasVendidas
 }
 
 
