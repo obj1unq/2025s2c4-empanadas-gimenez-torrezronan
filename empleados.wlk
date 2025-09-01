@@ -1,5 +1,13 @@
 object galvan {
     var sueldoGalvan = 15000
+    var dineroDisponible = 0
+    var deudaActual = 0
+    
+    method gastar(cantidadGastada) {
+        dineroDisponible -= cantidadGastada
+    }
+
+    method dinero() = dineroDisponible 
 
     method actualizarSueldo(_actualizarSueldo) {
         sueldoGalvan = _actualizarSueldo
@@ -8,11 +16,11 @@ object galvan {
     method sueldo() = sueldoGalvan
 }
 
-
 object baigorria {
     var empanadasVendidas = 0
     var sueldoBaigorria = 0
     var SueldoAcumulado = 0
+    const precioPorEmpanada = 15
     
     method empanadasVendidas(_empanadasVendidas) {
         empanadasVendidas = empanadasVendidas + _empanadasVendidas
@@ -20,11 +28,11 @@ object baigorria {
     }
 
     method sueldoActual() {
-        sueldoBaigorria = sueldoBaigorria + empanadasVendidas * 15   
+        sueldoBaigorria = sueldoBaigorria + empanadasVendidas * precioPorEmpanada   
     }
 
     method sueldo(){
-        SueldoAcumulado = SueldoAcumulado + empanadasVendidas * 15
+        SueldoAcumulado = SueldoAcumulado + empanadasVendidas * precioPorEmpanada
         self.sueldoActual()
         empanadasVendidas = 0
         return sueldoBaigorria  
