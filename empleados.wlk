@@ -12,16 +12,26 @@ object galvan {
 object baigorria {
     var empanadasVendidas = 0
     var sueldoBaigorria = 0
+    var SueldoAcumulado = 0
     
     method empanadasVendidas(_empanadasVendidas) {
-        empanadasVendidas = empanadasVendidas + _empanadasVendidas 
+        empanadasVendidas = empanadasVendidas + _empanadasVendidas
+         
+    }
+
+    method sueldoActual() {
+        sueldoBaigorria = sueldoBaigorria + empanadasVendidas * 15   
     }
 
     method sueldo(){
-        return sueldoBaigorria + empanadasVendidas * 15
+        SueldoAcumulado = SueldoAcumulado + empanadasVendidas * 15
+        self.sueldoActual()
+        empanadasVendidas = 0
+        return sueldoBaigorria  
+        
     }
-
-    method empanadas() = empanadasVendidas
+    
+    method totalCobrado() = SueldoAcumulado
 }
 
 
