@@ -4,16 +4,36 @@ object galvan {
     var deudaActual = 0
     
     method gastar(cantidadGastada) {
-        dineroDisponible -= cantidadGastada
+        dineroDisponible = 
+            if (self.dinero()>cantidadGastada) self.gastaSinAdeudar(cantidadGastada)
+            else self.gastaYDebe(cantidadGastada)
+
     }
 
-    method dinero() = dineroDisponible 
+    method gastaYDebe(cuantoGasta) {
+        var resto = 0
+        resto = dineroDisponible - cuantoGasta
+        deudaActual = deudaActual + (-1*resto)
+        return 0
+    }
+    
+    method gastaSinAdeudar(cantidad) {
+        return dineroDisponible - cantidad
+    }
+
+    method dinero() = dineroDisponible
+
+    method deuda() = deudaActual 
 
     method actualizarSueldo(_actualizarSueldo) {
         sueldoGalvan = _actualizarSueldo
     }
 
-    method sueldo() = sueldoGalvan
+    method sueldo() {
+        deudaActual = sueldoGalvan - deudaActual
+        return sueldoGalvan
+    }
+
 }
 
 object baigorria {
