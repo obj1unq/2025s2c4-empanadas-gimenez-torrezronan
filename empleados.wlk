@@ -1,46 +1,39 @@
 object galvan {
     var sueldoGalvan = 15000
-    var dineroDisponible = 0
-    var deudaActual = 0
+    var estadoDeCuenta = 0
     
+    // gasta dinero    
+
     method gastar(cantidadGastada) {
-        dineroDisponible = 
-            if (self.dinero()>cantidadGastada) self.gastaSinAdeudar(cantidadGastada)
-             
-            else self.gastaYDebe(cantidadGastada)
-
+        estadoDeCuenta = estadoDeCuenta - cantidadGastada
+        
     }
 
-    method gastaYDebe(cuantoGasta) {
-        var resto = 0
-        resto = dineroDisponible - cuantoGasta
-        deudaActual = deudaActual + (-1*resto)
-        return 0
-    }
-    
-    method gastaSinAdeudar(cantidad) {
-        return dineroDisponible - cantidad
+    //cobra el dinero y paga si es que tiene deuda
+
+    method cobrarYPagar() {
+        estadoDeCuenta =
+        if(estadoDeCuenta < 0) sueldoGalvan - self.dinero()  else estadoDeCuenta + sueldoGalvan
     }
 
-    method dinero() = dineroDisponible
+    //devuelve si es que tiene deuda
 
-    method deuda() = deudaActual 
+    method deuda() =  if(estadoDeCuenta<0) estadoDeCuenta  else  0
+
+    //Devuelve el estado de cuenta de forma positiva
+
+    method dinero() = if(estadoDeCuenta>0)estadoDeCuenta else estadoDeCuenta*-1
+
+    //actualiza el sueldo de galvan
 
     method actualizarSueldo(_actualizarSueldo) {
         sueldoGalvan = _actualizarSueldo
     }
 
-    method pagarDeuda() {
-        dineroDisponible = 15000
-        dineroDisponible = 
-            if (self.dinero()>deudaActual) self.gastaSinAdeudar(deudaActual)
-             
-            else self.gastaYDebe(deudaActual)
-    }
+    //Devuelve el monto de sueldo que cobra Galvan
 
     method sueldo() {
-        self.pagarDeuda()
-        dineroDisponible = sueldoGalvan - dineroDisponible
+        self.cobrarYPagar()
         return sueldoGalvan
     }
 
