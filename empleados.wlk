@@ -13,16 +13,16 @@ object galvan {
 
     method cobrarYPagar() {
         estadoDeCuenta =
-        if(estadoDeCuenta < 0) sueldoGalvan - self.dinero()  else estadoDeCuenta + sueldoGalvan
+        if(estadoDeCuenta < 0) sueldoGalvan - self.deuda()  else estadoDeCuenta + sueldoGalvan
     }
 
     //devuelve si es que tiene deuda
 
-    method deuda() =  if(estadoDeCuenta<0) estadoDeCuenta  else  0
+    method deuda() =  if(estadoDeCuenta<0) estadoDeCuenta*-1  else  0
 
     //Devuelve el estado de cuenta de forma positiva
 
-    method dinero() = if(estadoDeCuenta>0)estadoDeCuenta else estadoDeCuenta*-1
+    method dinero() = if(estadoDeCuenta<0) estadoDeCuenta *-1  else 0
 
     //actualiza el sueldo de galvan
 
