@@ -31,7 +31,7 @@ object galvan {
     }
 
     method pagarDeuda() {
-        dineroDisponible = 15000
+        dineroDisponible = sueldoGalvan
         dineroDisponible = 
             if (self.dinero()>deudaActual) self.gastaSinAdeudar(deudaActual)
              
@@ -40,8 +40,7 @@ object galvan {
 
     method sueldo() {
         self.pagarDeuda()
-        dineroDisponible = sueldoGalvan - dineroDisponible
-        return sueldoGalvan
+        return sueldoGalvan 
     }
 
 }
